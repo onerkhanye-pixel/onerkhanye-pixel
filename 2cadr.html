@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <title>Ақтабан Шұбырынды — Тарих</title>
+
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            background: linear-gradient(#1a1a1a, #000);
+            color: #f2f2f2;
+            font-family: "Times New Roman", serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #container {
+            width: 70%;
+            max-width: 900px;
+            text-align: center;
+            animation: fadeIn 2s ease;
+        }
+
+        #header {
+            font-size: 48px;
+            margin-bottom: 30px;
+            letter-spacing: 3px;
+            border-bottom: 2px solid #bfa14a;
+            padding-bottom: 10px;
+        }
+
+        #text {
+            font-size: 22px;
+            line-height: 1.6;
+            margin-top: 20px;
+        }
+
+        #continue {
+            margin-top: 40px;
+            padding: 12px 30px;
+            font-size: 20px;
+            background: #bfa14a;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+
+<body>
+
+<div id="container">
+    <div id="header">ТАРИХ</div>
+
+    <div id="text">
+        XVIII ғасырдың басы. Қазақ хандығы ішкі алауыздық пен саяси әлсіздікке 
+        ұшыраған кезеңде, шығыстан күшейген Жоңғар мемлекеті жойқын шабуылға көшті.  
+        <br><br>
+        1723 жылы басталған бұл басқыншылық қазақ халқы үшін аса ауыр кезеңге айналды.
+        Халық ата қонысын тастап, босқындыққа ұшырады.  
+        Бұл тарихта <b>«Ақтабан шұбырынды, Алқакөл сұлама»</b> деген атпен қалды.
+        <br><br>
+        Алда – жер үшін күрес, ел үшін сын,  
+        тағдырды өзгерту жолындағы шешуші сәттер тұр…
+    </div>
+
+    <button id="continue">Жалғастыру</button>
+</div>
+
+<script>
+    document.getElementById("continue").onclick = () => {
+        window.location.href = "game.html"; 
+    };
+</script>
+
+</body>
+</html>

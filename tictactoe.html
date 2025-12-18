@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>АҚСУДЫ ЖАУЛАП АЛУ</title>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background: #f2f2f2;
+}
+
+h1 {
+    margin-top: 20px;
+}
+
+#status {
+    font-size: 20px;
+    margin: 10px;
+}
+
+#board {
+    width: 300px;
+    margin: 20px auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 5px;
+}
+
+.cell {
+    width: 100px;
+    height: 100px;
+    font-size: 40px;
+    border: 2px solid black;
+    background: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+button {
+    padding: 10px 25px;
+    font-size: 18px;
+    margin: 10px;
+    cursor: pointer;
+}
+
+#nextMap {
+    background: #444;
+    color: white;
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+#nextMap.active {
+    opacity: 1;
+    cursor: pointer;
+}
+</style>
+</head>
+
+<body>
+
+<h1>АҚСУДЫ ЖАУЛАП АЛУ</h1>
+<p id="status">Your turn (X)</p>
+
+<div id="board">
+    <div class="cell"></div><div class="cell"></div><div class="cell"></div>
+    <div class="cell"></div><div class="cell"></div><div class="cell"></div>
+    <div class="cell"></div><div class="cell"></div><div class="cell"></div>
+</div>
+
+<button onclick="restart()">Restart</button>
+<br>
+<button id="nextMap" onclick="goNext()" disabled>
+    КЕЛЕСІ КАРТА → URUMQI
+</button>
+
+<script>
+const cells = document.querySelectorAll(".cell")
+const statusText = document.getElementById("status")
+const nextMapBtn = document.getElementById("nextMap")
+
+const HUMAN = "X"
+const CPU = "O"
+let gameOver = false
+
+const winCombos = [
+    [0,1,2],[3,4,5],[6,7,8],
+    [0,3,6],[1,4,7],[2,5,8],
+    [0,4,8],[2,4,6]
+]
+
+// Player move
+cells.forEach((cell) => {
+    cell.addEventListener("click", () => {
+        if (cell.textContent !== "" || gameOver) return
+
+        cell.textContent = HUMAN
+
+        if (checkWin(HUMAN)) {
+            statusText.textContent = "Victory! Aksu conquered!"
+            gameOver = true
+            unlockNextMap()
+            return
+        }
+
+        if (isTie()) {
+            statusText.textContent = "Stalemate!"
+            gameOver = true
+            return
+        }
+
+        cpuMove()
+    })
+})
+
+// CPU move
+function cpuMove() {
+    let empty = []
+    cells.forEach((cell, i) => {
+        if (cell.textContent === "") empty.push(i)
+    })
+
+    let move = empty[Math.floor(Math.random() * empty.length)]
+    cells[move].textContent = CPU
+
+    if (checkWin(CPU)) {
+        statusText.textContent = "Defeat! Dzhungars win!"
+        gameOver = true
+        return
+    }
+
+    if (isTie()) {
+        statusText.textContent = "Stalemate!"
+        gameOver = true
+        return
+    }
+
+    statusText.textContent = "Your turn (X)"
+}
+
+// Win check
+function checkWin(player) {
+    return winCombos.some(combo =>
+        combo.every(i => cells[i].textContent === player)
+    )
+}
+
+// Tie check
+function isTie() {
+    return [...cells].every(cell => cell.textContent !== "")
+}
+
+// Restart
+function restart() {
+    cells.forEach(cell => cell.textContent = "")
+    statusText.textContent = "Your turn (X)"
+    gameOver = false
+    lockNextMap()
+}
+
+// Unlock next map
+function unlockNextMap() {
+    nextMapBtn.disabled = false
+    nextMapBtn.classList.add("active")
+}
+
+// Lock next map
+function lockNextMap() {
+    nextMapBtn.disabled = true
+    nextMapBtn.classList.remove("active")
+}
+
+// Go to Urumqi
+function goNext() {
+    if (!nextMapBtn.disabled) {
+        window.location.href = "Urumqi.html"
+    }
+}
+</script>
+
+</body>
+</html>

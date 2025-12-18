@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+<meta charset="UTF-8">
+<title>Соңғы қаланы жаулап алу</title>
+<style>
+body {
+    margin: 0;
+    font-family: "Times New Roman", serif;
+    background: #111;
+    color: #f5f5f5;
+    text-align: center;
+}
+
+/* 🔥 Burning title */
+.burning {
+    font-size: 64px;
+    margin-top: 30px;
+    color: #ffae00;
+    text-shadow:
+        0 0 5px #ff6a00,
+        0 0 10px #ff4500,
+        0 0 20px #ff0000,
+        0 0 40px #ff0000;
+    animation: fire 1.5s infinite alternate;
+}
+
+@keyframes fire {
+    from {
+        text-shadow:
+            0 0 5px #ff6a00,
+            0 0 10px #ff4500,
+            0 0 20px #ff0000;
+    }
+    to {
+        text-shadow:
+            0 0 10px #ffd000,
+            0 0 25px #ff6a00,
+            0 0 50px #ff0000;
+    }
+}
+
+.container {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #ffae00;
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+.history {
+    font-size: 20px;
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+/* Map image */
+.map {
+    width: 100%;
+    max-width: 700px;
+    border: 4px solid #aa7a00;
+    border-radius: 10px;
+    margin: 30px 0;
+}
+
+/* Button */
+.btn {
+    background: linear-gradient(45deg, #ff0000, #ffae00);
+    color: black;
+    font-size: 22px;
+    font-weight: bold;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 0 0 15px #ff4500;
+}
+
+.btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 30px #ffae00;
+}
+</style>
+</head>
+<body>
+
+<!-- Burning title -->
+<div class="burning">Соңғы қаланы жаулап алу</div>
+
+<div class="container">
+
+    <!-- HISTORY TITLE -->
+    <h2>Тарих</h2>
+
+    <!-- HISTORY TEXT -->
+    <p class="history">
+        Қазақ хандығы соңғы кезеңге жетті. Елдің бірлігі мен батылдығы сыналды.
+        Жоңғарлардан қалған соңғы күштермен бетпе-бет келгенде,
+        халық тағдырын өзгертуге шақырылды.
+        Соңғы шешуші шайқас — бұл ел үшін, тарих үшін, және әрбір адам үшін маңызды болды.
+    </p>
+
+    <!-- MAP IMAGE -->
+    <img src="https://i.pinimg.com/736x/95/15/4d/95154dec78e2849e4c8322f9b2463aae.jpg" alt="Соңғы қала" class="map">
+
+    <!-- BUTTON -->
+    <br><br>
+    <button id="word" class="btn" onclick="conquerFinalCity()">
+        СОҢҒЫ ҚАЛА ҮШІН СОҢҒЫ ОЙЫН / CONQUER FINAL CITY 
+    </button>
+
+</div>
+
+<script>
+function conquerFinalCity() {
+    alert("Соңғы шайқас басталды! Барлық күштер дайын!");
+    // Мұнда келесі ойын логикасы / memory game немесе миссия қосуға болады
+} 
+    document.getElementById("word").onclick = () => {
+        window.location.href = "word.html";   
+    };
+</script>
+
+</body>
+</html>
